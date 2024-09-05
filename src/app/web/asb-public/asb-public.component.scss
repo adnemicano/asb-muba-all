@@ -1,72 +1,74 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    margin-bottom: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  margin-top: 8rem;
 }
 
 h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    margin-top: 4rem;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin-top: 4rem;
 }
 
 .table {
-    width: 100%;
-    margin-bottom: 1rem;
-    background-color: transparent;
-    border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
 }
 
 .table-bordered {
-    border: 1px solid #dee2e6;
+  border: 1px solid #dee2e6;
 }
 
 .table-bordered th,
 .table-bordered td {
-    border: 1px solid #dee2e6;
-    padding: 8px;
-    text-align: center;
-    vertical-align: middle;
+  border: 1px solid #dee2e6;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .header th {
-    background-color: #097862;
-    color: #fff;
+  background-color: #097862;
+  color: #fff;
 }
 
 .table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
 }
 
-.table tbody+tbody {
-    border-top: 2px solid #dee2e6;
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .mt-5 {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }
 
 .mt-3 {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .table-responsive {
-    overflow-x: auto;
+  overflow-x: auto;
 }
