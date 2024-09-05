@@ -6,6 +6,12 @@
   margin-bottom: 3rem; /* Jarak antara banner dan elemen berikutnya */
 }
 
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Gaya untuk section berita */
 .berita-section {
   padding: 10px;
@@ -118,5 +124,9 @@
 
   .card {
     max-width: 100%;
+  }
+
+  .banner img {
+    margin-top: 5rem;
   }
 }
