@@ -36,6 +36,7 @@ const routes: Routes = [
       { path: "ssh", component: SshPublicComponent},
       { path: "hspk", component: HspkPublicComponent},
       { path: "asb", component: AsbPublicComponent},
+      { path: "", redirectTo: "home", pathMatch: "full"},
 
     ],
   },
@@ -45,9 +46,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
-       useHash: true
-    })
+    RouterModule.forChild(routes)
   ],
   exports: [
   ],

@@ -7,17 +7,17 @@
     </button>
   </div>
   <ul [ngClass]="{'nav-links': true, 'active': isMenuOpen}">
-    <li><a routerLink="./web/home">BERANDA</a></li>
-    <li><a routerLink="./web/berita">BERITA</a></li>
+    <li><a routerLink="/home">BERANDA</a></li>
+    <li><a routerLink="/berita">BERITA</a></li>
     <li class="dropdown">
       <a routerLink="">STANDAR HARGA</a>
       <ul class="dropdown-content">
-        <li><a routerLink="/web/ssh">Standar Harga Satuan (SSH)</a></li>
-        <li><a routerLink="/web/hspk">Harga Satuan Pokok Pekerjaan (HSPK)</a></li>
-        <li><a routerLink="/web/asb">Analisa Standar Belanja (ASB)</a></li>
+        <li><a routerLink="/ssh">Standar Harga Satuan (SSH)</a></li>
+        <li><a routerLink="/hspk">Harga Satuan Pokok Pekerjaan (HSPK)</a></li>
+        <li><a routerLink="/asb">Analisa Standar Belanja (ASB)</a></li>
       </ul>
     </li>
-    <li><a routerLink="/web/peraturan">PERATURAN</a></li>
-    <li><a routerLink="/web/informasi">INFORMASI</a></li>
+    <li><a routerLink="/peraturan">PERATURAN</a></li>
+    <li><a routerLink="/informasi">INFORMASI</a></li>
   </ul>
 </nav>

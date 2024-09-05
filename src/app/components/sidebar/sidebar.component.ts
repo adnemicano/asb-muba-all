@@ -12,20 +12,20 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', submenu: [] },
 
     { path: '/shs', title: 'Standar Harga Satuan',  icon:'content_paste', class: '', submenu: [
-      {path: '/ssh', title: 'SSH',  icon:'content_paste', class: '', submenu:[]},
-      {path: '/hspk', title: 'HSPK',  icon:'content_paste', class: '', submenu:[]},
-      {path: '/asb', title: 'ASB',  icon:'content_paste', class: '', submenu:[]},
-      {path: '/sbu', title: 'SBU',  icon:'content_paste', class: '', submenu:[]},
+      {path: '/admin//ssh', title: 'SSH',  icon:'content_paste', class: '', submenu:[]},
+      {path: '/admin/hspk', title: 'HSPK',  icon:'content_paste', class: '', submenu:[]},
+      {path: '/admin/asb', title: 'ASB',  icon:'content_paste', class: '', submenu:[]},
+      {path: '/admin/sbu', title: 'SBU',  icon:'content_paste', class: '', submenu:[]},
     ]},
 
     { path: '/table-list', title: 'Referensi',  icon:'person', class: '', submenu: [
-      {path: '/akun', title: 'Akun',  icon:'person', class: '', submenu: []},
+      {path: '/admin/akun', title: 'Akun',  icon:'person', class: '', submenu: []},
     ] },
-    { path: '/typography', title: 'Setting Web',  icon:'library_books', class: '', submenu: [
-      {path: '/beranda', title: 'Beranda',  icon:'library_books', class: '', submenu: []},
-      {path: '/berita', title: 'Berita',  icon:'library_books', class: '', submenu: []},
-      {path: '/peraturan', title: 'Peraturan',  icon:'library_books', class: '', submenu: []},
-      {path: '/informasi', title: 'Informasi',  icon:'library_books', class: '', submenu: []},
+    { path: '/admin/typography', title: 'Setting Web',  icon:'library_books', class: '', submenu: [
+      {path: '/admin/beranda', title: 'Beranda',  icon:'library_books', class: '', submenu: []},
+      {path: '/admin/berita', title: 'Berita',  icon:'library_books', class: '', submenu: []},
+      {path: '/admin/peraturan', title: 'Peraturan',  icon:'library_books', class: '', submenu: []},
+      {path: '/admin/informasi', title: 'Informasi',  icon:'library_books', class: '', submenu: []},
     ] },
     
 ];

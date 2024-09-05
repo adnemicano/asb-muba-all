@@ -19,7 +19,6 @@ import { WebModule } from './web/web.module';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    WebModule
   ],
   declarations: [
     AppComponent,

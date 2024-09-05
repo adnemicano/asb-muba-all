@@ -7,12 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "dashboard",
-    pathMatch: "full",
-  },
-  {
-    path: "",
+    path: "admin",
     component: AdminLayoutComponent,
     children: [
       {
@@ -25,12 +20,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: "web",
+    path: "",
     loadChildren: () => import("./web/web.module").then((m) => m.WebModule),
-  },
-  {
-    path: "**", // Tambahkan rute wildcard untuk menangani rute yang tidak ditemukan
-    redirectTo: "dashboard",
   },
 ];
 
@@ -38,9 +29,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
-       useHash: true
-    })
+    RouterModule.forRoot(routes)
   ],
   exports: [
   ],
