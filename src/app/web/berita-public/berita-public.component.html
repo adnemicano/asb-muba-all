@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="title mb-4">BERITA ANALISA STANDAR HARGA</h2>
+      <div class="card mb-4" *ngFor="let berita of beritaList">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img [src]="berita.image" class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ berita.date }}</h5>
+              <p class="card-text">{{ berita.title }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="mb-4">
+        <h5 class="title-lainnya">Berita Lainnya</h5>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of beritaLainnyaList">
+            <small>{{ item.date }}</small>
+            <p class="mb-0">{{ item.title }}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="mb-4">
+        <h5>PENGUMUMAN</h5>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let announcement of pengumumanList">
+            <small>{{ announcement.date }}</small>
+            <p class="mb-0">{{ announcement.title }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

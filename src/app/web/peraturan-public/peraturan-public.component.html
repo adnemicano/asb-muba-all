@@ -1,0 +1,43 @@
+<div class="container">
+  <h2 class="title">PERATURAN</h2>
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'uu'" (click)="setActiveTab('bahan')">Undang-undang</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'pp'" (click)="setActiveTab('upah')">PP</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'permen'" (click)="setActiveTab('alat')">Permen</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'perda'" (click)="setActiveTab('alat')">Perda</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'peraturanlain'" (click)="setActiveTab('alat')">Peraturan Lainnya</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'arsip'" (click)="setActiveTab('alat')">Arsip Harga Satuan</a>
+    </li>
+  </ul>
+  <div class="content">
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Judul</th>
+          <th>Tahun</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td class="judul-peraturan">{{ item.judul }}</td>
+          <td>{{ item.tahun }}</td>
+          <td><button class="download-btn">Download</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

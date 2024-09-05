@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <img src="assets/img/logo-asbmuba.png" alt="Logo" class="logo">
+    <!-- Add a menu button for mobile -->
+    <button class="menu-toggle" (click)="toggleMenu()">
+      &#9776; <!-- Menu icon (you can use an actual icon here) -->
+    </button>
+  </div>
+  <ul [ngClass]="{'nav-links': true, 'active': isMenuOpen}">
+    <li><a routerLink="./web/home">BERANDA</a></li>
+    <li><a routerLink="./web/berita">BERITA</a></li>
+    <li class="dropdown">
+      <a routerLink="">STANDAR HARGA</a>
+      <ul class="dropdown-content">
+        <li><a routerLink="/web/ssh">Standar Harga Satuan (SSH)</a></li>
+        <li><a routerLink="/web/hspk">Harga Satuan Pokok Pekerjaan (HSPK)</a></li>
+        <li><a routerLink="/web/asb">Analisa Standar Belanja (ASB)</a></li>
+      </ul>
+    </li>
+    <li><a routerLink="/web/peraturan">PERATURAN</a></li>
+    <li><a routerLink="/web/informasi">INFORMASI</a></li>
+  </ul>
+</nav>

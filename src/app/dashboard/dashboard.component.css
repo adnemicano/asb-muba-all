@@ -1,0 +1,99 @@
+body {
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 4rem;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin: 0 1.5rem;
+    width: calc(100% - 3rem);
+    border-radius: 1rem;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+h5.card-title {
+    font-size: 16px;
+    color: #097862;
+    font-weight: 600;
+}
+
+p.card-text {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.table-container {
+    margin: 0 auto;
+    /* Center the table */
+    width: 100%;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+table thead th {
+    color: #097862;
+    font-weight: 600;
+    border: none;
+    text-align: center;
+}
+
+table thead th:first-child {
+    text-align: left;
+}
+
+table tbody td {
+    text-align: center;
+    border: none;
+}
+
+table tbody td:first-child {
+    text-align: left;
+}
+
+h4 {
+    color: black;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-top: 6rem;
+    color: black;
+    font-weight: 800;
+}
+
+.card-body img {
+    height: 50px;
+    /* Adjust size as needed */
+    width: auto;
+}
+
+.col-md-4 {
+    max-width: 350px;
+    /* Adjust width as needed */
+}
+
+.mb-5 {
+    margin-bottom: 3rem !important;
+    /* Increase margin for larger spacing */
+}

@@ -1,0 +1,23 @@
+.footer {
+    background-color: #005847;
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    height: 40px;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+
+    .container-fluid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .container-fluid p {
+        margin-top: 16px;
+    }
+}

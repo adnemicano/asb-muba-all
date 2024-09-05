@@ -1,0 +1,290 @@
+  <div class="ssh-container">
+    <h3 class="title">HARGA SATUAN POKOK PEKERJAAN (HSPK)</h3>
+    <h5 class="subtitle">Edisi Ke - 2 Tahun 2023</h5>
+    
+    <div class="search-section">
+      <button class="btn-penjelasan" (click)="openModal()">Penjelasan</button>
+      <input type="text" placeholder="Cari data" [(ngModel)]="searchQuery" (ngModelChange)="filterData()">
+    </div>
+
+    <div class="filter-section">
+      <select [(ngModel)]="selectedKecamatan" (change)="filterData()">
+        <option value="">-- Pilih Kecamatan --</option>
+        <option value="Lais">Kecamatan Lais</option>
+        <option value="Keluang">Kecamatan Keluang</option>
+        <option value="Sungai Lilin">Kecamatan Sungai Lilin</option>
+        <option value="Batanghari Leko">Kecamatan Batanghari Leko</option>
+        <option value="Sekayu">Kecamatan Sekayu</option>
+        <option value="Babat Supat">Kecamatan Babat Supat</option>
+        <option value="Babat Toman">Kecamatan Babat Toman</option>
+        <option value="Sungai Keruh">Kecamatan Sungai Keruh</option>
+        <option value="Jirak Jaya">Kecamatan Jirak Jaya</option>
+        <option value="Bayung Lencir">Kecamatan Bayung Lencir</option>
+        <option value="Sanga Desa">Kecamatan Sanga Desa</option>
+        <option value="Lawang Wetan">Kecamatan Lawang Wetan</option>
+        <option value="Tungkal Jaya">Kecamatan Tungkal Jaya</option>
+        <option value="Plakat Tinggi">Kecamatan Plakat Tinggi</option>
+        <option value="Lalan">Kecamatan Lalan</option>
+      </select>
+    </div>
+
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Kode</th>
+          <th>Uraian Pekerjaan</th>
+          <th>Satuan</th>
+          <th>Harga (Rp)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="filteredData.length === 0">
+          <td colspan="5" class="no-data">Tidak ditemukan data yang sesuai</td>
+        </tr>
+        <tr *ngFor="let item of filteredData; let i = index" (click)="openDetail()">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.kode }}</td>
+          <td>{{ item.uraianpekerjaan }}</td>
+          <td>{{ item.satuan }}</td>
+          <td>{{ item.harga | currency: 'IDR' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note-section">
+      <p>Menampilkan {{ filteredData.length }} dari {{ data.length }} entri</p>
+      <p class="note">
+        Catatan: Harga satuan bahan bangunan yang tercantum tidak mengikat hanya sebagai ancara-ancara dalam menyusun perencanaan pekerjaan konstruksi oleh pada pemanfaat baik di lingkungan pemerintah, dunia usaha juga masyarakat jasa konstruksi.
+      </p>
+    </div>
+  </div>
+
+  <div class="modal" [ngClass]="{'show': isModalOpen}">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="title">PENJELASAN</h2>
+
+      <h3>LATAR BELAKANG</h3>
+      <p>Untuk menentukan biaya bangunan (building cost) yang bertumpu pada prinsip peningkatan efisiensi dan efektifitas, serta rasionalisasi dalam pembangunan maka dibutuhkan sarana dasar guna membuat perhitungan harga satuan. Harga satuan disebut sebagai perhitungan kebutuhan biaya Tenaga Kerja, bahan, dan peralatan untuk mendapatkan harga satuan untuk satu jenis pekerjaan tertentu berdasar Permen No. 1 Tahun 2022 yaitu Analisa Harga Satuan Pekerjaan (AHSP).</p>
+      <p>Permen No. 1 Tahun 2022 merupakan Pedoman Penyusunan Perkiraan Biaya Pekerjaan Konstruksi Bidang Pekerjaan Umum Dan Perumahan Rakyat, terdiri dari Analisis Harga Satuan Pekerjaan (AHSP) Bidang Umum, AHSP Bidang Sumber Daya Air; AHSP Bidang Bina Marga dan AHSP Bidang Cipta Karya.</p>
+      <p>Lembar penjelasan ini bertujuan agar para pemanfaat, pengguna maupun pelaksana pekerjaan konstruksi bidang pekerjaan umum dan perumahan rakyat memiliki kesamaan pandang dalam menggunakan Standard Nasional Indonesia – SNI sebagai acuan dasar menghitung besarnya Harga Satuan berbagai Pekerjaan (HSP) Konstruksi dan SHST (Standar Harga Satuan Tertinggi) Bangunan Gedung Negara, mengingat semua Pekerjaan Bidang Pekerjaan Umum menggunakan Permen No. 1 Tahun 2022 sebagai acuan dasar dalam menghitung besar harga satuan berbagai Pekerjaan Konstruksi.</p>
+      <p>Selanjutnya diharapkan Analisa Harga Satuan Pekerjaan (AHSP) dapat dimanfaatkan semaksimal mungkin oleh para pemanfaat dan pelaksana pekerjaan konstruksi bidang pekerjaan umum dan perumahan rakyat, seta bangunan gedung negara. Adapun pelaksana yang dimaksud adalah pihak-pihak yang terkait yaitu para perencana, konsultan, kontraktor maupun perorangan dalam memperkirakan biaya pekerjaan konstruksi bidang pekerjaan umum dan perumahan rakyat, serta bangunan gedung negara.</p>
+      
+      <h3>MAKSUD DAN TUJUAN</h3>
+      <h6>Umum</h6>
+      <p>Dalam penyusunan mencakup harga dasar bahan dan upah khusus untuk pekerjaan sektor konstruksi di pasaran, quarry, distributor, sumber lain termasuk dari pemerintah kota dan atau kabupaten, hal tersebut dimaksudkan :</p>
+      <ul>
+          <li>Mengetahui pengaruh harga antar kabupaten, kota dalam satu wilayah eks karsidenan atau kabupaten dan kota yang berbatasan;</li>
+          <li>Mengetahui Kabupaten dan Kota yang mana menjadi pusat penjualan bahan bangunan pabrikan, bahan bangunan lokal seperti batu bata, genteng dan atau bahan bangunan alam (pasir, batu, kapur dll);</li>
+          <li>Harga yang ditetapkan Pemerintah Kabupaten dan atau Kota sudah mencakup apa saja dalam memperkirakan besaran inflasi;</li>
+      </ul>
+      <h6>Khusus</h6>
+      <p>Membantu masyarakat, mahasiswa, perencana, perancang atau pelaksana pembangunan untuk memperkirakan biaya bangunan.</p>
+      <h6>Manfaat</h6>
+      <p>Menunjang standarisasi perhitungan dasar ”Harga Satuan Pekerjaan Konstruksi”.</p>
+
+      <h3>RUANG LINGKUP DAN LOKASI</h3>
+      <p>Penyusunan Harga Satuan Pekerjaan Konstruksi Tahun Anggaran 2021 ini dilaksanakan di 15 Kecamatan di wilayah Kabupaten Musi Banyuasin, yaitu:</p>
+      <ol>
+          <li>Kecamatan Lais</li>
+          <li>Kecamatan Keluang</li>
+          <li>Kecamatan Sungai Lilin</li>
+          <li>Kecamatan Batanghari Leko</li>
+          <li>Kecamatan Sekayu</li>
+          <li>Kecamatan Babat Supat</li>
+          <li>Kecamatan Babat Toman</li>
+          <li>Kecamatan Sungai Keruh</li>
+          <li>Kecamatan Jirak Jaya</li>
+          <li>Kecamatan Bayung Lencir</li>
+          <li>Kecamatan Sanga Desa</li>
+          <li>Kecamatan Lawang Wetan</li>
+          <li>Kecamatan Tungkal Jaya</li>
+          <li>Kecamatan Plakat Tinggi</li>
+          <li>Kecamatan Lalan</li>
+      </ol>
+
+      <h3>METODOLOGI PELAKSANAAN SURVEY</h3>
+      <p>Pelaksanaan survey berdasarkan Perlem LKPP 09/2018 bahwa sumber info HSD untuk penyusunan Harga Satuan Pekerjaan antara lain :</p>
+      <ul>
+          <li>Harga pasar setempat yaitu harga barang/jasa di lokasi barang/jasa diproduksi/diserahkan/dilaksanakan, menjelang dilaksanakannya pemilihan penyedia;</li>
+          <li>Informasi biaya/harga satuan yang dipublikasikan secara resmi oleh Kementerian/Lembaga/Pemerintah Daerah.</li>
+      </ul>
+
+      <h3>DATA SURVEI</h3>
+      <p>Sumber data yang digunakan adalah data survey harga pasar pada sampling 3 (tiga) Toko Bahan Bangunan dan harga yang ditetapkan Dinas PU Kota/Kabupaten di 35 kabupaten/kota Provinsi Jawa Tengah.</p>
+
+      <h3>PELAKSANAAN PENGUMPULAN DATA</h3>
+      <p>Pelaksanaan pengumpulan data dilaksanakan di 35 Kabupaten/Kota di wilayah Provinsi Jawa Tengah.</p>
+
+      <h3>PENGERTIAN</h3>
+      <p>a. Analisis Harga Satuan Pekerjaan</p>
+      <p class="keterangan">Analisis Harga Satuan Pekerjaan yang selanjutnya disingkat AHSP adalah perhitungan kebutuhan biaya Tenaga Kerja, bahan, dan peralatan untuk mendapatkan harga satuan untuk satu jenis pekerjaan tertentu;</p>
+      <p>b. Harga Satuan Pekerja</p>
+      <p class="keterangan">Biaya yang dihitung dengan analisis harga satuan suatu pekerjaan yang terdiri atas biaya langsung dan biaya tidak langsung sebagai mata pembayaran jenis pekerjaan tertentu, belum termasuk pajak pertambahan nilai;</p>
+      <p>c. Harga Satuan Bahan</p>
+      <p class="keterangan">Adalah harga satuan komponen dari HSP per satu satuan tertentu;</p>
+      <p>d. Satuan Pekerjaan</p>
+      <p class="keterangan">Adalah Satuan jenis kegiatan konstruksi bangunan yang dinyatakan dalam satuan panjang, luas, volume, dan unit</p>
+      <p>e. Koefisien</p>
+      <p class="keterangan">Adalah faktor pengali atau koefisien sebagai dasar penghitungan biaya bahan, biaya alat, dan upah tenaga kerja;</p>
+      <p>f. Koefisien Bahan</p>
+      <p class="keterangan">Adalah indeks kuantum yang menunjukkan kebutuhan akan suatu jenis bahan untuk setiap satuan kuantitas pekerjaan;</p>
+      <p>g. Koefisien Tenaga Kerja</p>
+      <p class="keterangan">Adalah indeks yang menunjukkan kebutuhan jumlah Tenaga Kerja Konstruksi untuk mengerjakan setiap satuan kuantitas pekerjaan;</p>
+      <p>h. Harga Satuan Bahan Bangunan</p>
+      <p class="keterangan">Pada dasarnya ditetapkan oleh pemerintah Kabupaten/Kota melalui survey pasar, sehingga harga bahan bangunan yang berlaku setempat sebagai harga pasar yang sifatnya murni merupakan harga distributor/ toko / pengecer / retail / depo tanpa memasukkan komponen tambahan lainnya seperti pajak-pajak, restribusi, keuntungan maupun indeks inflasi;</p>
+      <p>i. Harga Satuan Upah Tenaga Kerja Konstruksi</p>
+      <p class="keterangan">Adalah sesuai dengan Upah minimum Kabupaten/Kota (UMK) sebagai standard pengupahan pekerja yang penetapannya oleh Pemerintah Kabupaten dan Kota dibagi 25 hari, dan harga pasar.ibagi</p>
+    </div>
+  </div>
+
+  <div class="modal" [ngClass]="{'show': isDetailOpen}">
+    <div class="modal-content">
+      <span class="close" (click)="closeDetail()">&times;</span>
+
+        <div class="modal-header">
+          <h3 class="modal-title">Analisa Harga Satuan Pekerjaan</h3>
+        </div>
+        <div class="modal-body">
+          <h6>A.1.1.1 - HARGA SATUAN PEKERJAAN PERSIAPAN</h6>
+          <h6>A.1.1.1.1.1 - (K3) Pembuatan 1 m2 steger / perancah dari bambu s.d. tinggi 6 meter</h6>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Uraian</th>
+                  <th>Kode</th>
+                  <th>Satuan</th>
+                  <th>Koefisien</th>
+                  <th>Harga Satuan (Rp)</th>
+                  <th>Jumlah Harga (Rp)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="kode">
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                </tr>
+                <tr class="section-header">
+                  <td colspan="1" class="bg-row-header">A</td>
+                  <td colspan="6" class="bg-row-header">Tenaga Kerja</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>PEKERJA</td>
+                  <td>L01</td>
+                  <td>OH</td>
+                  <td>1.00</td>
+                  <td class="text-right">94.206</td>
+                  <td class="text-right">94.206</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>TUKANG KAYU</td>
+                  <td>L02</td>
+                  <td>OH</td>
+                  <td>2.00</td>
+                  <td class="text-right">111.055</td>
+                  <td class="text-right">222.110</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>KEPALA TUKANG</td>
+                  <td>L03</td>
+                  <td>OH</td>
+                  <td>0.20</td>
+                  <td class="text-right">128.000</td>
+                  <td class="text-right">25.600</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>MANDOR</td>
+                  <td>L04</td>
+                  <td>OH</td>
+                  <td>0.05</td>
+                  <td class="text-right">125.685</td>
+                  <td class="text-right">6.284</td>
+                </tr>
+                <tr>
+                  <td colspan="6" class="text-right">Jumlah Harga Tenaga Kerja</td>
+                  <td class="text-right">348.200</td>
+                </tr>
+                <tr class="section-header">
+                  <td colspan="1" class="bg-row-header">B</td>
+                  <td colspan="6" class="bg-row-header">Bahan</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Bambu diameter 6-8/600 cm</td>
+                  <td></td>
+                  <td>batang</td>
+                  <td>1.25</td>
+                  <td class="text-right">19.046</td>
+                  <td class="text-right">23.808</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Tali ijuk</td>
+                  <td></td>
+                  <td>kg</td>
+                  <td>0.186</td>
+                  <td class="text-right">34.099</td>
+                  <td class="text-right">6.342</td>
+                </tr>
+                <tr>
+                  <td colspan="6" class="text-right">Jumlah Harga Bahan</td>
+                  <td class="text-right">30.150</td>
+                </tr>
+                <tr class="section-header">
+                  <td colspan="1" class="bg-row-header">C</td>
+                  <td colspan="1" class="bg-row-header">Peralatan</td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header"></td>
+                </tr>
+                <tr>
+                  <td colspan="6" class="text-right">Jumlah Harga Peralatan</td>
+                  <td class="text-right">0</td>
+                </tr>
+                <tr class="section-header">
+                  <td colspan="1" class="bg-row-header">D</td>
+                  <td colspan="3" class="bg-row-header">Jumlah Harga Tenaga, Bahan dan Peralatan (A+B+C)</td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header">378.350</td>
+                </tr>
+                <tr class="section-header">
+                  <td colspan="1" class="bg-row-header">E</td>
+                  <td colspan="3" class="bg-row-header">Overhead + profit (10%)</td>
+                  <td colspan="2" class="bg-row-header">10 % x D</td>
+                  <td colspan="1" class="bg-row-header">37.835</td>
+                </tr>
+                <tr class="section-header">
+                  <td colspan="1" class="bg-row-header">F</td>
+                  <td colspan="3" class="bg-row-header">Harga Satuan Pekerjaan (D+E)</td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header"></td>
+                  <td colspan="1" class="bg-row-header">416.185</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6>Catatan:</h6>
+          <p class="note">
+            Harga satuan bahan bangunan yang tercantum tidak mengikat hanya sebagai acuan dalam menyusun perencanaan pekerjaan konstruksi oleh pada pemanfaat baik di lingkungan pemerintah, dunia usaha juga masyarakat jasa konstruksi.
+          </p>
+        </div>
+
+    </div>
+  </div>
+

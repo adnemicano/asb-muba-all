@@ -1,0 +1,146 @@
+.container {
+  max-width: 1200px;
+  margin-top: 2rem;
+  padding: 0 15px;
+}
+
+.title {
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #333;
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 10px;
+
+  .row {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff; /* Background color for the "outline" */
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #F4D03F;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: left;
+    width: fit-content;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 700;
+    text-align: left;
+  }
+}
+
+.title-lainnya, h5 {
+  margin-top: 4rem;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 700;
+  text-align: left;
+}
+
+.list-group {
+  padding: 0;
+}
+
+.list-group-item {
+  font-size: 0.9rem;
+  color: #555;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: #f1f1f1;
+  }
+
+  small {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+/* Centering the content and adjusting for mobile view */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .col-md-8, .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .card {
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0; /* Reset padding on mobile */
+
+    img {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 10px 10px 0 0;
+      padding: 10px; /* Add padding for outline effect */
+      background-color: #fff;
+    }
+
+    .card-body {
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .card-title, .card-text {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .title-lainnya {
+    margin-top: 2rem;
+  }
+}

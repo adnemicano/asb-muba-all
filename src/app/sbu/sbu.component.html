@@ -1,0 +1,308 @@
+<div class="ssh-container">
+  <h1>Sertifikasi Badan Usaha (SBU)</h1>
+  <div class="info-box">
+    <p class="title">PP 12 Tahun 2019</p>
+    <ol>
+      <li>
+        Belanja Daerah sebagaimana dimaksud dalam Pasal 49 ayat (5) berpedoman
+        pada standar harga satuan regional, analisis standar belanja, dan/atau
+        standar teknis sesuai dengan ketentuan peraturan perundang-undangan.
+      </li>
+      <li>
+        Standar harga satuan regional sebagaimana dimaksud pada ayat (1) dan
+        ayat (2) ditetapkan dengan Peraturan Presiden.
+      </li>
+      <li>
+        Standar harga satuan regional sebagaimana dimaksud pada ayat (3)
+        digunakan sebagai pedoman dalam menyusun standar harga satuan pada
+        masing-masing Daerah.
+      </li>
+    </ol>
+  </div>
+
+  <div class="actions">
+    <input type="text" placeholder="Cari data" class="search-box" />
+    <button class="btn">
+      <div class="usulan">
+        <img src="assets/img/icon-usulan.png" alt="" />
+        <p>SSH Usulan</p>
+      </div>
+    </button>
+
+    <div class="dropdown-wrapper">
+      <button class="btn" (click)="toggleDropdown()">
+        <div class="add">
+          <img src="assets/img/icon-add.png" alt="" />
+          <p>Standar Harga</p>
+          <img src="assets/img/icon-arrowdown.png" alt="" />
+        </div>
+      </button>
+      <div class="dropdown-menu" [ngClass]="{ show: isDropdownVisible }">
+        <ul class="dropdown-list">
+          <li><a type="button" (click)="klikmodal()">Input Harga Satuan</a></li>
+          <li><a href="#">Import Harga Satuan</a></li>
+          <li><a href="#">Import Akun Standar Harga</a></li>
+          <li><a href="">Import Nilai PDN</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="btn" (click)="klikarsip()">
+      <div class="arsip">
+        <img src="assets/img/icon-arsip.png" alt="" />
+        <p>Arsip</p>
+      </div>
+    </button>
+
+    <div class="dropdown-wrapper">
+      <button class="btn" (click)="toggleSettingsDropdown()">
+        <div class="pengaturan">
+          <img src="assets/img/icon-pengaturan.png" alt="" />
+          <p>Pengaturan</p>
+          <img src="assets/img/icon-arrowdown.png" alt="" />
+        </div>
+      </button>
+      <div
+        class="dropdown-menu"
+        [ngClass]="{ show: isSettingsDropdownVisible }"
+      >
+        <ul class="dropdown-list">
+          <li><a>Hapus Semua Standar Harga</a></li>
+          <li><a>Kunci Semua Standar Harga</a></li>
+          <li><a>Buka Semua Standar Harga</a></li>
+          <li><a>Export Satuan</a></li>
+          <li><a>Export Standar Harga</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <table class="ssh-table">
+    <thead>
+      <tr>
+        <th class="checkbox-column"><input type="checkbox" /></th>
+        <th class="action-column">Aksi</th>
+        <th>Kode Komponen</th>
+        <th>Uraian Komponen</th>
+        <th>Spesifikasi</th>
+        <th>Satuan</th>
+        <th>Harga Satuan</th>
+        <th>TKDN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="8" style="text-align: center">
+          8.1.01.03.07.0002 Beban Honorarium Pengadaan Barang/Jasa
+        </td>
+      </tr>
+      <tr>
+        <td class="checkbox-column"><input type="checkbox" /></td>
+        <td class="action-column dropdown-wrapper">
+          <img src="assets/img/icon-actions.png" (click)="toggleTdDropdown()" />
+          <div class="dropdown-menu" [ngClass]="{ show: isTdDropdownVisible }">
+            <ul class="dropdown-list">
+              <li>
+                <a type="button" (click)="kliktampil()">Tampil Rekening</a>
+              </li>
+              <li><a>Edit Standar Harga</a></li>
+              <li><a>Kunci Standar Harga</a></li>
+              <li><a>Hapus Standar Harga</a></li>
+            </ul>
+          </div>
+        </td>
+        <td>8.1.01.03.007.0002.00001</td>
+        <td>Honorarium Pejabat Pengadaan Barang/Jasa</td>
+        <td>Honorarium Pejabat Pengadaan Barang/Jasa</td>
+        <td>Orang / Paket / Pekerjaan</td>
+        <td>Rp 680.000,00</td>
+        <td>100%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modalform>
+  <div mat-dialog-content>
+    <div class="form-container">
+      <h3>Form Tambah Komponen</h3>
+      <form [formGroup]="componentForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="kategori">Kategori *</label>
+          <input type="text" id="kategori" Name="kategori" required />
+        </div>
+        <div class="form-group">
+          <label for="namaKomponen">Nama Komponen *</label>
+          <input
+            type="text"
+            id="namaKomponen"
+            formControlName="namaKomponen"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="spesifikasi">Spesifikasi *</label>
+          <input
+            type="text"
+            id="spesifikasi"
+            formControlName="spesifikasi"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="satuan">Satuan *</label>
+          <input type="text" id="satuan" formControlName="satuan" required />
+        </div>
+        <div class="form-group">
+          <label>Jenis Produk *</label>
+          <div>
+            <input
+              type="radio"
+              id="produkDalamNegeri"
+              formControlName="jenisProduk"
+              value="Dalam Negeri"
+            />
+            <label for="produkDalamNegeri">Produk Dalam Negeri</label>
+            <input
+              type="radio"
+              id="produkLuarNegeri"
+              formControlName="jenisProduk"
+              value="Luar Negeri"
+            />
+            <label for="produkLuarNegeri">Produk Luar Negeri</label>
+          </div>
+        </div>
+        <div
+          *ngIf="componentForm.get('jenisProduk').value === 'Dalam Negeri'"
+          class="form-group"
+        >
+          <label for="tkdn">Tingkat Komponen Dalam Negeri (TKDN) *</label>
+          <input type="text" id="tkdn" formControlName="tkdn" required />
+          <small>Max presentase hanya sampai 100%</small>
+        </div>
+        <div class="form-group">
+          <label for="namaAkun">Nama Akun *</label>
+          <input type="text" id="namaAkun" formControlName="namaAkun" />
+        </div>
+        <div class="form-group">
+          <label>Harga Satuan *</label>
+          <div class="sub-group" *ngFor="let kecamatan of kecamatans">
+            <label>{{ kecamatan }}</label>
+            <input type="text" name="hargaSatuan" required />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+    <button mat-raised-button mat-dialog-close class="btn-simpan">
+      Simpan
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #modalarsip>
+  <div mat-dialog-content>
+    <div class="arsip-komponen-container">
+      <div class="modal-header">
+        <h2>Arsip Komponen</h2>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Cari data" />
+        <button class="action-button restore-all">Restore Semua</button>
+        <button class="action-button delete-all">Hapus Semua</button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Kode Komponen</th>
+              <th>Uraian Komponen</th>
+              <th>Spesifikasi</th>
+              <th>Satuan</th>
+              <th>Harga Satuan</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>{{ item.kode }}</td>
+              <td>{{ item.uraian }}</td>
+              <td>{{ item.spesifikasi }}</td>
+              <td>{{ item.satuan }}</td>
+              <td>{{ item.harga }}</td>
+              <td>
+                <img src="assets/img/icon-group-action.png" alt="" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+    <button mat-raised-button mat-dialog-close class="btn-simpan">
+      Simpan
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+<!-- modal-template.component.html -->
+<ng-template #modaltampil>
+  <div mat-dialog-content>
+    <div class="tampil-rekening">
+      <div class="modal-header">
+        <h2>Rekening Penyusun</h2>
+      </div>
+      <div class="modal-body">
+        <div class="info">
+          <p><strong>Nama:</strong> Kuas</p>
+          <p><strong>Spesifikasi:</strong> Kuas Lukis, Gagang Kayu</p>
+          <p><strong>Satuan:</strong> Buah</p>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Cari data"
+            [(ngModel)]="searchQuery"
+            (input)="filterRekening()"
+          />
+          <button
+            class="add-button"
+            (click)="addRekening()"
+            style="background-color: #16a085; color: #fff"
+          >
+            Tambah Rekening
+          </button>
+        </div>
+        <div class="rekening-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Rekening</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rekening of filteredRekening">
+                <td class="rekening-column">
+                  {{ rekening.code }} {{ rekening.description }}
+                </td>
+                <td class="aksi-column">
+                  <img src="assets/img/icon-delete.png" alt="" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+  </mat-dialog-actions>
+</ng-template>

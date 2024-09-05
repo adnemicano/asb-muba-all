@@ -1,0 +1,142 @@
+<div class="ssh-container">
+  <h3 class="title">STANDAR SATUAN HARGA (SSH)</h3>
+  <h5 class="subtitle">Edisi Ke - 2 Tahun 2023</h5>
+  
+  <div class="search-section">
+    <button class="btn-penjelasan" (click)="openModal()">Penjelasan</button>
+    <input type="text" placeholder="Cari data" [(ngModel)]="searchQuery" (ngModelChange)="filterData()">
+  </div>
+
+  <div class="filter-section">
+    <select [(ngModel)]="selectedKecamatan" (change)="filterData()">
+      <option value="">-- Pilih Kecamatan --</option>
+      <option value="Lais">Kecamatan Lais</option>
+      <option value="Keluang">Kecamatan Keluang</option>
+      <option value="Sungai Lilin">Kecamatan Sungai Lilin</option>
+      <option value="Batanghari Leko">Kecamatan Batanghari Leko</option>
+      <option value="Sekayu">Kecamatan Sekayu</option>
+      <option value="Babat Supat">Kecamatan Babat Supat</option>
+      <option value="Babat Toman">Kecamatan Babat Toman</option>
+      <option value="Sungai Keruh">Kecamatan Sungai Keruh</option>
+      <option value="Jirak Jaya">Kecamatan Jirak Jaya</option>
+      <option value="Bayung Lencir">Kecamatan Bayung Lencir</option>
+      <option value="Sanga Desa">Kecamatan Sanga Desa</option>
+      <option value="Lawang Wetan">Kecamatan Lawang Wetan</option>
+      <option value="Tungkal Jaya">Kecamatan Tungkal Jaya</option>
+      <option value="Plakat Tinggi">Kecamatan Plakat Tinggi</option>
+      <option value="Lalan">Kecamatan Lalan</option>
+    </select>
+  </div>
+
+  <div class="tab-section">
+    <button class="tab-btn" [ngClass]="{active: selectedFilter === 'BAHAN'}" (click)="setFilter('BAHAN')">BAHAN</button>
+    <button class="tab-btn" [ngClass]="{active: selectedFilter === 'UPAH'}" (click)="setFilter('UPAH')">UPAH</button>
+    <button class="tab-btn" [ngClass]="{active: selectedFilter === 'ALAT'}" (click)="setFilter('ALAT')">ALAT</button>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Jenis</th>
+        <th>Bahan</th>
+        <th>Satuan</th>
+        <th>Harga (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="5" class="no-data">Tidak ditemukan data yang sesuai</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-section">
+    <p>Menampilkan {{ filteredData.length }} dari {{ data.length }} entri</p>
+    <p class="note">
+      Catatan: Harga satuan bahan bangunan yang tercantum tidak mengikat hanya sebagai ancara-ancara dalam menyusun perencanaan pekerjaan konstruksi oleh pada pemanfaat baik di lingkungan pemerintah, dunia usaha juga masyarakat jasa konstruksi.
+    </p>
+  </div>
+</div>
+
+<div class="modal" [ngClass]="{'show': isModalOpen}">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2 class="title">PENJELASAN</h2>
+
+    <h3>LATAR BELAKANG</h3>
+    <p>Untuk menentukan biaya bangunan (building cost) yang bertumpu pada prinsip peningkatan efisiensi dan efektifitas, serta rasionalisasi dalam pembangunan maka dibutuhkan sarana dasar guna membuat perhitungan harga satuan. Harga satuan disebut sebagai perhitungan kebutuhan biaya Tenaga Kerja, bahan, dan peralatan untuk mendapatkan harga satuan untuk satu jenis pekerjaan tertentu berdasar Permen No. 1 Tahun 2022 yaitu Analisa Harga Satuan Pekerjaan (AHSP).</p>
+    <p>Permen No. 1 Tahun 2022 merupakan Pedoman Penyusunan Perkiraan Biaya Pekerjaan Konstruksi Bidang Pekerjaan Umum Dan Perumahan Rakyat, terdiri dari Analisis Harga Satuan Pekerjaan (AHSP) Bidang Umum, AHSP Bidang Sumber Daya Air; AHSP Bidang Bina Marga dan AHSP Bidang Cipta Karya.</p>
+    <p>Lembar penjelasan ini bertujuan agar para pemanfaat, pengguna maupun pelaksana pekerjaan konstruksi bidang pekerjaan umum dan perumahan rakyat memiliki kesamaan pandang dalam menggunakan Standard Nasional Indonesia – SNI sebagai acuan dasar menghitung besarnya Harga Satuan berbagai Pekerjaan (HSP) Konstruksi dan SHST (Standar Harga Satuan Tertinggi) Bangunan Gedung Negara, mengingat semua Pekerjaan Bidang Pekerjaan Umum menggunakan Permen No. 1 Tahun 2022 sebagai acuan dasar dalam menghitung besar harga satuan berbagai Pekerjaan Konstruksi.</p>
+    <p>Selanjutnya diharapkan Analisa Harga Satuan Pekerjaan (AHSP) dapat dimanfaatkan semaksimal mungkin oleh para pemanfaat dan pelaksana pekerjaan konstruksi bidang pekerjaan umum dan perumahan rakyat, seta bangunan gedung negara. Adapun pelaksana yang dimaksud adalah pihak-pihak yang terkait yaitu para perencana, konsultan, kontraktor maupun perorangan dalam memperkirakan biaya pekerjaan konstruksi bidang pekerjaan umum dan perumahan rakyat, serta bangunan gedung negara.</p>
+    
+    <h3>MAKSUD DAN TUJUAN</h3>
+    <h6>Umum</h6>
+    <p>Dalam penyusunan mencakup harga dasar bahan dan upah khusus untuk pekerjaan sektor konstruksi di pasaran, quarry, distributor, sumber lain termasuk dari pemerintah kota dan atau kabupaten, hal tersebut dimaksudkan :</p>
+    <ul>
+        <li>Mengetahui pengaruh harga antar kabupaten, kota dalam satu wilayah eks karsidenan atau kabupaten dan kota yang berbatasan;</li>
+        <li>Mengetahui Kabupaten dan Kota yang mana menjadi pusat penjualan bahan bangunan pabrikan, bahan bangunan lokal seperti batu bata, genteng dan atau bahan bangunan alam (pasir, batu, kapur dll);</li>
+        <li>Harga yang ditetapkan Pemerintah Kabupaten dan atau Kota sudah mencakup apa saja dalam memperkirakan besaran inflasi;</li>
+    </ul>
+    <h6>Khusus</h6>
+    <p>Membantu masyarakat, mahasiswa, perencana, perancang atau pelaksana pembangunan untuk memperkirakan biaya bangunan.</p>
+    <h6>Manfaat</h6>
+    <p>Menunjang standarisasi perhitungan dasar ”Harga Satuan Pekerjaan Konstruksi”.</p>
+
+    <h3>RUANG LINGKUP DAN LOKASI</h3>
+    <p>Penyusunan Harga Satuan Pekerjaan Konstruksi Tahun Anggaran 2021 ini dilaksanakan di 15 Kecamatan di wilayah Kabupaten Musi Banyuasin, yaitu:</p>
+    <ol>
+        <li>Kecamatan Lais</li>
+        <li>Kecamatan Keluang</li>
+        <li>Kecamatan Sungai Lilin</li>
+        <li>Kecamatan Batanghari Leko</li>
+        <li>Kecamatan Sekayu</li>
+        <li>Kecamatan Babat Supat</li>
+        <li>Kecamatan Babat Toman</li>
+        <li>Kecamatan Sungai Keruh</li>
+        <li>Kecamatan Jirak Jaya</li>
+        <li>Kecamatan Bayung Lencir</li>
+        <li>Kecamatan Sanga Desa</li>
+        <li>Kecamatan Lawang Wetan</li>
+        <li>Kecamatan Tungkal Jaya</li>
+        <li>Kecamatan Plakat Tinggi</li>
+        <li>Kecamatan Lalan</li>
+    </ol>
+
+    <h3>METODOLOGI PELAKSANAAN SURVEY</h3>
+    <p>Pelaksanaan survey berdasarkan Perlem LKPP 09/2018 bahwa sumber info HSD untuk penyusunan Harga Satuan Pekerjaan antara lain :</p>
+    <ul>
+        <li>Harga pasar setempat yaitu harga barang/jasa di lokasi barang/jasa diproduksi/diserahkan/dilaksanakan, menjelang dilaksanakannya pemilihan penyedia;</li>
+        <li>Informasi biaya/harga satuan yang dipublikasikan secara resmi oleh Kementerian/Lembaga/Pemerintah Daerah.</li>
+    </ul>
+
+    <h3>DATA SURVEI</h3>
+    <p>Sumber data yang digunakan adalah data survey harga pasar pada sampling 3 (tiga) Toko Bahan Bangunan dan harga yang ditetapkan Dinas PU Kota/Kabupaten di 35 kabupaten/kota Provinsi Jawa Tengah.</p>
+
+    <h3>PELAKSANAAN PENGUMPULAN DATA</h3>
+    <p>Pelaksanaan pengumpulan data dilaksanakan di 35 Kabupaten/Kota di wilayah Provinsi Jawa Tengah.</p>
+
+    <h3>PENGERTIAN</h3>
+    <p>a. Analisis Harga Satuan Pekerjaan</p>
+    <p class="keterangan">Analisis Harga Satuan Pekerjaan yang selanjutnya disingkat AHSP adalah perhitungan kebutuhan biaya Tenaga Kerja, bahan, dan peralatan untuk mendapatkan harga satuan untuk satu jenis pekerjaan tertentu;</p>
+    <p>b. Harga Satuan Pekerja</p>
+    <p class="keterangan">Biaya yang dihitung dengan analisis harga satuan suatu pekerjaan yang terdiri atas biaya langsung dan biaya tidak langsung sebagai mata pembayaran jenis pekerjaan tertentu, belum termasuk pajak pertambahan nilai;</p>
+    <p>c. Harga Satuan Bahan</p>
+    <p class="keterangan">Adalah harga satuan komponen dari HSP per satu satuan tertentu;</p>
+    <p>d. Satuan Pekerjaan</p>
+    <p class="keterangan">Adalah Satuan jenis kegiatan konstruksi bangunan yang dinyatakan dalam satuan panjang, luas, volume, dan unit</p>
+    <p>e. Koefisien</p>
+    <p class="keterangan">Adalah faktor pengali atau koefisien sebagai dasar penghitungan biaya bahan, biaya alat, dan upah tenaga kerja;</p>
+    <p>f. Koefisien Bahan</p>
+    <p class="keterangan">Adalah indeks kuantum yang menunjukkan kebutuhan akan suatu jenis bahan untuk setiap satuan kuantitas pekerjaan;</p>
+    <p>g. Koefisien Tenaga Kerja</p>
+    <p class="keterangan">Adalah indeks yang menunjukkan kebutuhan jumlah Tenaga Kerja Konstruksi untuk mengerjakan setiap satuan kuantitas pekerjaan;</p>
+    <p>h. Harga Satuan Bahan Bangunan</p>
+    <p class="keterangan">Pada dasarnya ditetapkan oleh pemerintah Kabupaten/Kota melalui survey pasar, sehingga harga bahan bangunan yang berlaku setempat sebagai harga pasar yang sifatnya murni merupakan harga distributor/ toko / pengecer / retail / depo tanpa memasukkan komponen tambahan lainnya seperti pajak-pajak, restribusi, keuntungan maupun indeks inflasi;</p>
+    <p>i. Harga Satuan Upah Tenaga Kerja Konstruksi</p>
+    <p class="keterangan">Adalah sesuai dengan Upah minimum Kabupaten/Kota (UMK) sebagai standard pengupahan pekerja yang penetapannya oleh Pemerintah Kabupaten dan Kota dibagi 25 hari, dan harga pasar.ibagi</p>
+  </div>
+</div>
+
+
+

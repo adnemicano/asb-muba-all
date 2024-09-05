@@ -1,0 +1,91 @@
+.container {
+  padding: 20px;
+  text-align: center;
+
+  .title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: black;
+  }
+
+  .subtitle {
+    margin-bottom: 2rem;
+    color: black;
+    font-weight: 600;
+  }
+
+  .subtitle span {
+    color: #097862;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; // Align items to the start of the row
+
+    .col-md-3 {
+      flex: 1 1 calc(25% - 50px); // Adjust the width to make the cards wider
+      margin-bottom: 2rem; // Reduce the gap between cards
+
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        .img-container {
+          padding: 10px;
+          flex: 0 0 auto;
+        }
+
+        .card-img-top {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+
+        .card-body {
+          padding: 15px;
+          flex: 1 0 auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+          }
+
+          .card-text {
+            margin-bottom: 10px;
+          }
+
+          .btn-primary {
+            background-color: #16A085;
+            border: none;
+
+            &:hover {
+              background-color: #097862;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; // Align items vertically
+
+    .col-md-3 {
+      flex: 0 0 auto; // Do not shrink
+      width: 100%; // Make the card full width
+      margin-bottom: 3rem; // Increased gap between cards
+    }
+  }
+}

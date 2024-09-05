@@ -1,0 +1,13 @@
+.nav .submenu {
+    list-style: none;
+    padding-left: 20px;
+    /* Indentation for submenus */
+}
+
+.nav .submenu .nav-item {
+    margin-top: 5px;
+}
+
+.arrow-icon {
+    display: none;
+}

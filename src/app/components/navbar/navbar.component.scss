@@ -1,0 +1,45 @@
+$navbar-bg-color: #16a085;
+$navbar-secondary-color: #097862;
+
+.navbar {
+  background-color: $navbar-bg-color;
+  color: white;
+}
+
+.year-button {
+  background-color: $navbar-secondary-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 20px;
+  margin-top: 6px;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .icon {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 24px;
+      height: 24px;
+      cursor: pointer; /* Add cursor pointer to indicate clickability */
+    }
+  }
+
+  .location-text {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+  }
+}

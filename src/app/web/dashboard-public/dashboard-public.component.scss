@@ -1,0 +1,122 @@
+/* Gaya untuk banner */
+.banner {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  margin-bottom: 3rem; /* Jarak antara banner dan elemen berikutnya */
+}
+
+/* Gaya untuk section berita */
+.berita-section {
+  padding: 10px;
+}
+
+/* Gaya untuk judul berita */
+.news-title {
+  text-align: center;
+  margin-bottom: 1rem; /* Jarak antara judul dan gambar berita */
+}
+
+.news-title h2 {
+  font-weight: 800;
+  color: black;
+  margin: 0; /* Menghilangkan margin default pada h2 */
+}
+
+/* Gaya untuk kontainer gambar berita */
+.news {
+  display: flex;
+  justify-content: center; /* Memastikan gambar berada di tengah */
+  gap: 20px; /* Jarak antara gambar berita */
+  flex-wrap: wrap; /* Memastikan gambar berpindah baris jika tidak muat di satu baris */
+}
+
+/* Gaya untuk gambar berita */
+.news img {
+  max-width: 100%; /* Agar gambar tidak melebihi lebar kontainer */
+  height: auto; /* Menjaga rasio aspek gambar */
+  display: block; /* Menghilangkan jarak di bawah gambar */
+}
+
+.section-container {
+    margin-top: 3rem;
+  text-align: center;
+  padding: 20px;
+  background-color: #d9d9d9;
+}
+
+.section-title {
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.card-button {
+  background-color: #ffbf00;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: auto;
+}
+
+.card-button:hover {
+  background-color: #cd9c09;
+}
+
+
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}

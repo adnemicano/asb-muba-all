@@ -1,0 +1,20 @@
+
+  
+  <!-- <div mat-dialog-content [innerHtml]="htmlContent"></div> -->
+  <!-- <div mat-dialog-content> -->
+  <ng-container [ngTemplateOutlet]="data.dialogContent"></ng-container>
+  <!-- </div> -->
+  
+  <mat-dialog-actions align="end" *ngIf="data.isAction">
+    <button mat-raised-button mat-dialog-close>
+      {{ data.cancelText ? data.cancelText : "Batal" }}
+    </button>
+    <button
+      mat-raised-button
+      mat-dialog-close
+      (click)="confirm()"
+      style="background: #2962ff; color: #fff"
+    >
+      {{ data.confirmText ? data.confirmText : "Ya" }}
+    </button>
+  </mat-dialog-actions>

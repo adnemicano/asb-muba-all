@@ -1,0 +1,45 @@
+<div class="akun">
+  <h1>Setting Web - Peraturan</h1>
+  <mat-card appearance="outlined" class="card-utama">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="dropdown">
+        <mat-form-field style="width: 100%" appearance="outline" class="drop">
+          <mat-label>Pilih Peraturan</mat-label>
+          <mat-select formControlName="regulationType">
+            <mat-option *ngFor="let section of sections" [value]="section">{{
+              section
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div formArrayName="regulations">
+        <div
+          *ngFor="let regulation of regulations.controls; let i = index"
+          [formGroupName]="i"
+          class="berita-utama"
+        >
+          <div class="input">
+            <h5>Nama Peraturan</h5>
+            <input formControlName="name" type="text" class="inputan" />
+          </div>
+          <div class="input">
+            <h5>Tahun</h5>
+            <input formControlName="year" type="text" class="inputan" />
+          </div>
+        </div>
+      </div>
+
+      <div class="button">
+        <button type="button" (click)="addRegulation()">Tambah Peraturan</button>
+      </div>
+
+      <hr>
+
+      <div class="berita-button">
+        <button class="tutup" type="button">Tutup</button>
+        <button class="simpan" type="submit">Simpan</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

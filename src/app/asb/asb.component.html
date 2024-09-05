@@ -1,0 +1,721 @@
+<div class="ssh-container">
+  <h1>Analisa Standar Belanja (ASB)</h1>
+  <div class="info-box">
+    <p class="title">PP 12 Tahun 2019</p>
+    <ol>
+      <li>
+        Belanja Daerah sebagaimana dimaksud dalam Pasal 49 ayat (5) berpedoman
+        pada standar harga satuan regional, analisis standar belanja, dan/atau
+        standar teknis sesuai dengan ketentuan peraturan perundang-undangan.
+      </li>
+      <li>
+        Standar harga satuan regional sebagaimana dimaksud pada ayat (1) dan
+        ayat (2) ditetapkan dengan Peraturan Presiden.
+      </li>
+      <li>
+        Standar harga satuan regional sebagaimana dimaksud pada ayat (3)
+        digunakan sebagai pedoman dalam menyusun standar harga satuan pada
+        masing-masing Daerah.
+      </li>
+    </ol>
+  </div>
+
+  <div class="actions">
+    <input type="text" placeholder="Cari data" class="search-box" />
+    <button class="btn">
+      <div class="usulan">
+        <img src="assets/img/icon-usulan.png" alt="" />
+        <p>SSH Usulan</p>
+      </div>
+    </button>
+
+    <div class="dropdown-wrapper">
+      <button class="btn" (click)="toggleDropdown()">
+        <div class="add">
+          <img src="assets/img/icon-add.png" alt="" />
+          <p>Standar Harga</p>
+          <img src="assets/img/icon-arrowdown.png" alt="" />
+        </div>
+      </button>
+      <div class="dropdown-menu" [ngClass]="{ show: isDropdownVisible }">
+        <ul class="dropdown-list">
+          <li><a type="button" (click)="klikmodal()">Input Harga Satuan</a></li>
+          <li><a href="#">Import Harga Satuan</a></li>
+          <li><a href="#">Import Akun Standar Harga</a></li>
+          <li><a href="">Import Nilai PDN</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="btn" (click)="klikarsip()">
+      <div class="arsip">
+        <img src="assets/img/icon-arsip.png" alt="" />
+        <p>Arsip</p>
+      </div>
+    </button>
+
+    <div class="dropdown-wrapper">
+      <button class="btn" (click)="toggleSettingsDropdown()">
+        <div class="pengaturan">
+          <img src="assets/img/icon-pengaturan.png" alt="" />
+          <p>Pengaturan</p>
+          <img src="assets/img/icon-arrowdown.png" alt="" />
+        </div>
+      </button>
+      <div
+        class="dropdown-menu"
+        [ngClass]="{ show: isSettingsDropdownVisible }"
+      >
+        <ul class="dropdown-list">
+          <li><a>Hapus Semua Standar Harga</a></li>
+          <li><a>Kunci Semua Standar Harga</a></li>
+          <li><a>Buka Semua Standar Harga</a></li>
+          <li><a>Export Satuan</a></li>
+          <li><a>Export Standar Harga</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <table class="ssh-table">
+    <thead>
+      <tr>
+        <th class="checkbox-column"><input type="checkbox" /></th>
+        <th class="action-column">Aksi</th>
+        <th>Kode Komponen</th>
+        <th>Uraian Komponen</th>
+        <th>Spesifikasi</th>
+        <th>Satuan</th>
+        <th>Harga Satuan</th>
+        <th>TKDN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="checkbox-column"><input type="checkbox" /></td>
+        <td class="action-column dropdown-wrapper">
+          <img src="assets/img/icon-actions.png" (click)="toggleTdDropdown()" />
+          <div class="dropdown-menu" [ngClass]="{ show: isTdDropdownVisible }">
+            <ul class="dropdown-list">
+              <li><a type="button" (click)="klikdetail()">Detail ASB</a></li>
+              <li>
+                <a type="button" (click)="kliktampil()">Tampil Rekening</a>
+              </li>
+              <li><a>Edit Standar Harga</a></li>
+              <li><a>Kunci Standar Harga</a></li>
+              <li><a>Hapus Standar Harga</a></li>
+            </ul>
+          </div>
+        </td>
+        <td>1.2.03.01.01.0001.00311</td>
+        <td>
+          Rehabilitasi Sedang Bangunan gedung Negara Tidak Sederhana (Kecamatan
+          Sekayu)
+        </td>
+        <td>
+          Luasan per m2 dihitung dari kebutuhan ruang (Tingkat Kerusakan 30% -
+          45%), spesifikasi seuai Peraturan Pemerintah Nomor 16 Tahun 2021
+        </td>
+        <td>M2</td>
+        <td>Rp 3.390.000,00</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modalform>
+  <div mat-dialog-content>
+    <div class="form-container">
+      <h3>Form Tambah Komponen</h3>
+      <form [formGroup]="componentForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="kategori">Kategori *</label>
+          <input type="text" id="kategori" Name="kategori" required />
+        </div>
+
+        <div class="form-group">
+          <label for="namaKomponen">Nama Komponen *</label>
+          <input
+            type="text"
+            id="namaKomponen"
+            formControlName="namaKomponen"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="spesifikasi">Spesifikasi *</label>
+          <input
+            type="text"
+            id="spesifikasi"
+            formControlName="spesifikasi"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="satuan">Satuan *</label>
+          <input type="text" id="satuan" formControlName="satuan" required />
+        </div>
+
+        <div class="form-group">
+          <label>Jenis Produk *</label>
+          <div>
+            <input
+              type="radio"
+              id="produkDalamNegeri"
+              formControlName="jenisProduk"
+              value="Dalam Negeri"
+            />
+            <label for="produkDalamNegeri">Produk Dalam Negeri</label>
+            <input
+              type="radio"
+              id="produkLuarNegeri"
+              formControlName="jenisProduk"
+              value="Luar Negeri"
+            />
+            <label for="produkLuarNegeri">Produk Luar Negeri</label>
+          </div>
+        </div>
+        <div
+          *ngIf="componentForm.get('jenisProduk').value === 'Dalam Negeri'"
+          class="form-group"
+        >
+          <label for="tkdn">Tingkat Komponen Dalam Negeri (TKDN) *</label>
+          <input type="text" id="tkdn" formControlName="tkdn" required />
+          <small>Max presentase hanya sampai 100%</small>
+        </div>
+
+        <div class="form-group">
+          <label for="namaAkun">Nama Akun *</label>
+          <input type="text" id="namaAkun" formControlName="namaAkun" />
+        </div>
+
+        <div class="form-group">
+          <label>Harga Satuan *</label>
+          <div>
+            <input
+              type="radio"
+              id="hargaSatuanPerlokasi"
+              formControlName="hargaSatuanType"
+              value="perlokasi"
+              (change)="onHargaSatuanTypeChange()"
+            />
+            <label for="hargaSatuanPerlokasi">Per Lokasi</label>
+            <input
+              type="radio"
+              id="hargaSatuanUmum"
+              formControlName="hargaSatuanType"
+              value="umum"
+              (change)="onHargaSatuanTypeChange()"
+            />
+            <label for="hargaSatuanUmum">Umum</label>
+          </div>
+        </div>
+
+        <div
+          *ngIf="componentForm.get('hargaSatuanType').value === 'perlokasi'"
+          class="form-group"
+        >
+          <label for="kecamatan">Pilih Kecamatan *</label>
+          <select
+            id="kecamatan"
+            formControlName="kecamatan"
+            (change)="onKecamatanChange()"
+          >
+            <option *ngFor="let kecamatan of kecamatans" [value]="kecamatan">
+              {{ kecamatan }}
+            </option>
+          </select>
+        </div>
+
+        <div
+          *ngIf="
+            componentForm.get('hargaSatuanType').value === 'umum' ||
+            (componentForm.get('hargaSatuanType').value === 'perlokasi' &&
+              componentForm.get('kecamatan').value)
+          "
+          class="form-group"
+        >
+          <label for="hargaSatuan">Harga Satuan *</label>
+          <input
+            type="text"
+            id="hargaSatuan"
+            formControlName="hargaSatuan"
+            required
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+    <button mat-raised-button mat-dialog-close class="btn-simpan">
+      Simpan
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #modalarsip>
+  <div mat-dialog-content>
+    <div class="arsip-komponen-container">
+      <div class="modal-header">
+        <h2>Arsip Komponen</h2>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Cari data" />
+        <button class="action-button restore-all">Restore Semua</button>
+        <button class="action-button delete-all">Hapus Semua</button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Kode Komponen</th>
+              <th>Uraian Komponen</th>
+              <th>Spesifikasi</th>
+              <th>Satuan</th>
+              <th>Harga Satuan</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>{{ item.kode }}</td>
+              <td>{{ item.uraian }}</td>
+              <td>{{ item.spesifikasi }}</td>
+              <td>{{ item.satuan }}</td> 
+              <td>{{ item.harga }}</td>
+              <td>
+                <img src="assets/img/icon-group-action.png" alt="" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+    <button mat-raised-button mat-dialog-close class="btn-simpan">
+      Simpan
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+<!-- modal-template.component.html -->
+<ng-template #modaltampil>
+  <div mat-dialog-content>
+    <div class="tampil-rekening">
+      <div class="modal-header">
+        <h2>Rekening Penyusun</h2>
+      </div>
+      <div class="modal-body">
+        <div class="info">
+          <p><strong>Nama:</strong> Kuas</p>
+          <p><strong>Spesifikasi:</strong> Kuas Lukis, Gagang Kayu</p>
+          <p><strong>Satuan:</strong> Buah</p>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Cari data"
+            [(ngModel)]="searchQuery"
+            (input)="filterRekening()"
+          />
+          <button
+            class="add-button"
+            (click)="addRekening()"
+            style="background-color: #16a085; color: #fff"
+          >
+            Tambah Rekening
+          </button>
+        </div>
+        <div class="rekening-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Rekening</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rekening of filteredRekening">
+                <td class="rekening-column">
+                  {{ rekening.code }} {{ rekening.description }}
+                </td>
+                <td class="aksi-column">
+                  <img src="assets/img/icon-delete.png" alt="" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #modaldetail>
+  <div mat-dialog-content>
+    <div class="detail-asb-container">
+      <h3>Analisa Standar Belanja (ASB)</h3>
+
+      <div class="container">
+        <div class="container-left">
+          <div class="form-group">
+            <label for="aktivitas">Aktivitas</label>
+            <input
+              type="text"
+              id="aktivitas"
+              class="form-control"
+              value="Rehabilitasi Sedang Bangunan gedung Negara Tidak Sederhana (Kecamatan Sekayu)"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="hspk">HSPK</label>
+            <input
+              type="text"
+              id="hspk"
+              class="form-control"
+              value="Pekerjaan Pembersihan Lokasi"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="container-right">
+          <button class="btn-add" (click)="klikdtlasb()">Tambah</button>
+          <button class="btn-edit" (click)="klikeditasb()">Edit</button>
+        </div>
+      </div>
+
+      <div class="asb-container">
+        <table class="asb-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Aksi</th>
+              <th rowspan="2">No.</th>
+              <th rowspan="2">Uraian</th>
+              <th rowspan="2">Kode</th>
+              <th rowspan="2">Satuan</th>
+              <th colspan="2">Koefisien 1</th>
+              <th colspan="2">Koefisien 2</th>
+              <th colspan="2">Koefisien 3</th>
+              <th rowspan="2">Harga Satuan (Rp)</th>
+              <th rowspan="2">Jumlah Harga (Rp)</th>
+            </tr>
+            <tr>
+              <th>Vol</th>
+              <th>Satuan</th>
+              <th>Vol</th>
+              <th>Satuan</th>
+              <th>Vol</th>
+              <th>Satuan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>A.</td>
+              <td>Tenaga Kerja</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr *ngFor="let detail of details">
+              <td><button class="btn-edit-detail">Edit</button></td>
+              <td>{{ detail.no }}</td>
+              <td>{{ detail.uraian }}</td>
+              <td>{{ detail.kode }}</td>
+              <td>{{ detail.satuan }}</td>
+              <td>{{ detail.koef1vol }}</td>
+              <td>{{ detail.koef1sat }}</td>
+              <td>{{ detail.koef2vol }}</td>
+              <td>{{ detail.koef2sat }}</td>
+              <td>{{ detail.koef3vol }}</td>
+              <td>{{ detail.koef3sat }}</td>
+              <td>{{ detail.hargasatuan }}</td>
+              <td>{{ detail.jmlharga }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <strong>Catatan:</strong>
+        <p>
+          Harga satuan bahan bangunan yang tercantum tidak mengikat hanya
+          sebagai ancar-ancar dalam menyusun perencanaan pekerjaan konstruksi
+          oleh pada pemanfaat baik di lingkungan pemerintah, dunia usaha juga
+          masyarakat jasa konstruksi.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+    <button mat-raised-button mat-dialog-close class="btn-simpan">
+      Simpan
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #modaldtlasb>
+  <div mat-dialog-content>
+    <div class="detail-asb-container">
+      <h3>Analisa Standar Belanja (ASB)</h3>
+
+      <div class="form-group">
+        <label for="aktivitas">Aktivitas</label>
+        <input
+          type="text"
+          id="aktivitas"
+          class="form-control"
+          value="Rehabilitasi Sedang Bangunan gedung Negara Tidak Sederhana (Kecamatan Sekayu)"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="hspk">HSPK</label>
+        <select id="hspk" class="form-control">
+          <option value="">Pilih HSPK</option>
+          <option value="">Pekerjaan Pembersihan Lokasi</option>
+        </select>
+      </div>
+
+      <div class="tf">
+        <button class="btn-tf" (click)="showTable = true">Transfer</button>
+      </div>
+    </div>
+
+    <!-- Conditionally render the table when showTable is true -->
+    <div *ngIf="showTable" class="asb-add-detail">
+      <table class="table-add-detail">
+        <thead>
+          <tr>
+            <th rowspan="2">Kode Komponen</th>
+            <th rowspan="2">Rincian Komponen</th>
+            <th rowspan="2">Sifat</th>
+            <th rowspan="2">Satuan HSPK</th>
+            <th colspan="2">Koefisien 1</th>
+            <th colspan="2">Koefisien 2</th>
+            <th colspan="2">Koefisien 3</th>
+            <th rowspan="2">Harga Satuan</th>
+            <th rowspan="2">Aksi</th>
+          </tr>
+          <tr>
+            <th>Vol</th>
+            <th>Satuan</th>
+            <th>Vol</th>
+            <th>Satuan</th>
+            <th>Vol</th>
+            <th>Satuan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of tblDataAdd; let i = index">
+            <td>{{ row.kodeKomponen }}</td>
+            <td>{{ row.rincianKomponen }}</td>
+            <td>
+              <select id="sifat" class="form-control"></select>
+            </td>
+            <td>{{ row.satuanHSPK }}</td>
+            <td>
+              <input [(ngModel)]="row.koefisien1Vol" type="text" />
+            </td>
+            <td>
+              <select id="sifat" class="form-control"></select>
+            </td>
+            <td>
+              <input [(ngModel)]="row.koefisien2Vol" type="text" />
+            </td>
+            <td>
+              <select id="sifat" class="form-control"></select>
+            </td>
+            <td>
+              <input [(ngModel)]="row.koefisien3Vol" type="text" />
+            </td>
+            <td>
+              <select id="sifat" class="form-control"></select>
+            </td>
+            <td>
+              <input [(ngModel)]="row.hargaSatuan" type="text" />
+            </td>
+            <td>
+              <button (click)="saveRow(row)" class="btn-simpan">Simpan</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+    <button mat-raised-button mat-dialog-close class="btn-simpan">
+      Simpan
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #modaleditasb>
+  <div mat-dialog-content>
+    <div class="edit-asb-container">
+      <h3>Analisa Standar Belanja (ASB)</h3>
+      <div class="form-group">
+        <label for="aktivitas">Aktivitas</label>
+        <input
+          type="text"
+          id="aktivitas"
+          class="form-control"
+          value="Rehabilitasi Sedang Bangunan gedung Negara Tidak Sederhana (Kecamatan Sekayu)"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="hspk">HSPK</label>
+        <input
+          type="text"
+          id="hspk"
+          class="form-control"
+          value="Pekerjaan Pembersihan Lokasi"
+          readonly
+        />
+      </div>
+
+      <div class="asb-add-detail">
+        <table class="table-add-detail">
+          <thead>
+            <tr>
+              <th rowspan="2">Kode Komponen</th>
+              <th rowspan="2">Rincian Komponen</th>
+              <th rowspan="2">Sifat</th>
+              <th rowspan="2">Satuan HSPK</th>
+              <th colspan="2">Koefisien 1</th>
+              <th colspan="2">Koefisien 2</th>
+              <th colspan="2">Koefisien 3</th>
+              <th rowspan="2">Harga Satuan</th>
+              <th rowspan="2">Aksi</th>
+            </tr>
+            <tr>
+              <th>Vol</th>
+              <th>Satuan</th>
+              <th>Vol</th>
+              <th>Satuan</th>
+              <th>Vol</th>
+              <th>Satuan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of tableData; let i = index">
+              <td>{{ row.kodeKomponen }}</td>
+              <td>{{ row.rincianKomponen }}</td>
+              <td (click)="editRow(i)">
+                <select
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.sifat"
+                  class="form-control"
+                ></select>
+                <span *ngIf="!row.editing">{{ row.sifat }}</span>
+              </td>
+              <td>{{ row.satuanHSPK }}</td>
+              <td (click)="editRow(i)">
+                <input
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.koefisien1Vol"
+                  type="text"
+                />
+                <span *ngIf="!row.editing">{{ row.koefisien1Vol }}</span>
+              </td>
+              <td (click)="editRow(i)">
+                <select
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.koefisien1Satuan"
+                  class="form-control"
+                ></select>
+                <span *ngIf="!row.editing">{{ row.koefisien1Satuan }}</span>
+              </td>
+              <td (click)="editRow(i)">
+                <input
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.koefisien2Vol"
+                  type="text"
+                />
+                <span *ngIf="!row.editing">{{ row.koefisien2Vol }}</span>
+              </td>
+              <td (click)="editRow(i)">
+                <select
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.koefisien2Satuan"
+                  class="form-control"
+                ></select>
+                <span *ngIf="!row.editing">{{ row.koefisien2Satuan }}</span>
+              </td>
+              <td (click)="editRow(i)">
+                <input
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.koefisien3Vol"
+                  type="text"
+                />
+                <span *ngIf="!row.editing">{{ row.koefisien3Vol }}</span>
+              </td>
+              <td (click)="editRow(i)">
+                <select
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.koefisien3Satuan"
+                  class="form-control"
+                ></select>
+                <span *ngIf="!row.editing">{{ row.koefisien3Satuan }}</span>
+              </td>
+              <td (click)="editRow(i)">
+                <input
+                  *ngIf="row.editing"
+                  [(ngModel)]="row.hargaSatuan"
+                  type="text"
+                />
+                <span *ngIf="!row.editing">{{ row.hargaSatuan }}</span>
+              </td>
+              <td>
+                <button
+                  *ngIf="row.editing"
+                  (click)="saveRow(row)"
+                  class="btn-simpan"
+                >
+                  Simpan
+                </button>
+                <button
+                  *ngIf="!row.editing"
+                  (click)="editRow(i)"
+                  class="btn-edit"
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Tutup</button>
+  </mat-dialog-actions>
+</ng-template>

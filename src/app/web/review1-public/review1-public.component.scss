@@ -1,0 +1,122 @@
+.review-container {
+  padding: 20px;
+  text-align: center;
+  max-width: 1200px; // Menentukan lebar maksimal
+  margin: 0 auto;
+  margin-top: 4rem; // Mengatur margin agar konten berada di tengah
+
+  .header {
+    margin-bottom: 20px;
+    
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      color: black;
+    }
+    
+    h2 {
+      font-size: 1.5em;
+      color: #666;
+    }
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .product-info {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      max-width: 100%; // Memastikan flex tidak melebihi container utama
+      
+      .product-image {
+        max-width: 300px;
+        margin-right: 20px;
+      }
+      
+      .product-details {
+        text-align: left;
+        max-width: 100%; // Memastikan detail tidak melebihi container utama
+        
+        h3 {
+          font-size: 1.2em;
+          color: #007bff;
+        }
+        
+        p {
+          font-size: 1em;
+          color: #333;
+        }
+      }
+    }
+    
+    .additional-images {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap; // Allow wrapping for better mobile layout
+      
+      img {
+        max-width: 100px;
+        margin: 10px; // Add margin for spacing
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .review-container {
+    padding: 10px;
+    
+    .header {
+      margin-top: 2rem;
+      
+      h1 {
+        font-size: 1.5em;
+      }
+      
+      h2 {
+        font-size: 1.2em;
+      }
+    }
+    
+    .content {
+      .product-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        
+        .product-image {
+          margin-right: 0;
+          margin-bottom: 20px;
+          max-width: 100%;
+        }
+        
+        .product-details {
+          text-align: center;
+          
+          h3 {
+            font-size: 1em;
+          }
+          
+          p {
+            font-size: 0.9em;
+          }
+        }
+      }
+      
+      .additional-images {
+        flex-direction: row; // Keep the row direction
+        justify-content: center; // Center the images
+        
+        img {
+          max-width: 100px;
+          margin: 10px;
+        }
+      }
+    }
+  }
+}

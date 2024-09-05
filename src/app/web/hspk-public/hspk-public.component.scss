@@ -1,0 +1,271 @@
+.ssh-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .search-section {
+    margin-top: 3rem;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    .btn-penjelasan {
+      padding: 10px 20px;
+      background-color: #16a085;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+
+  .filter-section {
+    text-align: left;
+    margin-bottom: 20px;
+
+    select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+    }
+  }
+
+  .tab-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+
+    .tab-btn {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f4f4f4;
+      cursor: pointer;
+      flex-grow: 1;
+      text-align: center;
+      margin: 0 5px;
+
+      &.active {
+        background-color: #16a085;
+        color: white;
+      }
+    }
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #16a085;
+      color: #fff;
+    }
+
+    .no-data {
+      text-align: center;
+      color: #999;
+    }
+  }
+
+  .note-section {
+    text-align: left;
+    font-size: 14px;
+
+    .note {
+      margin-top: 10px;
+      color: #666;
+      font-style: italic;
+    }
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+  text-align: left;
+}
+
+.modal .title {
+  text-align: center;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color: #4b4b4b;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+
+  &-bordered {
+    border: 1px solid #dee2e6;
+
+    th,
+    td {
+      border: 1px solid #dee2e6;
+    }
+  }
+
+  thead {
+    th {
+      background-color: #097862;
+      color: white;
+    }
+  }
+
+  td {
+    color: #4b4b4b;
+  }
+}
+
+.section-header {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.text-right {
+  text-align: right;
+}
+
+h6 {
+  color: #4b4b4b;
+  font-weight: 600;
+  text-align: left;
+}
+
+.note {
+  color: #4b4b4b;
+  text-align: left;
+}
+
+h3 {
+  color: black;
+  font-weight: 600;
+}
+
+.kode {
+  background-color: #16a085;
+}
+
+.kode td {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .search-section {
+    flex-direction: column;
+    align-items: stretch;
+
+    .btn-penjelasan {
+      margin-bottom: 10px;
+    }
+  }
+
+  .tab-section {
+    .tab-btn {
+      flex: 1 1 auto;
+      margin: 5px 0;
+    }
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .data-table {
+    display: block; /* Menambahkan display block untuk tabel */
+    width: 100%;
+    overflow-x: auto; /* Menambahkan overflow-x untuk scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* Untuk scroll yang lebih halus di iOS */
+    table-layout: fixed; /* Mengatur tata letak tabel agar lebih responsif */
+  }
+
+  .data-table th,
+  .data-table td {
+    min-width: 150px; /* Menetapkan lebar minimum untuk kolom agar tetap terbaca */
+    white-space: nowrap; /* Menghindari teks terpotong */
+  }
+}

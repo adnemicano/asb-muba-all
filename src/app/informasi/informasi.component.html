@@ -1,0 +1,60 @@
+<div class="akun">
+  <h1>Setting Web - Informasi</h1>
+  <mat-card appearance="outlined" class="card-utama">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div formArrayName="regulations">
+        <div
+          *ngFor="let regulation of regulations.controls; let i = index"
+          [formGroupName]="i"
+          class="berita-utama"
+        >
+          <div class="gambar">
+            <h5>Gambar</h5>
+            <input
+              type="file"
+              id="file-input-{{ i }}"
+              (change)="onFileSelected($event, i)"
+              style="display: none"
+            />
+            <button
+              class="button-2"
+              type="button"
+              (click)="openFileDialog('file-input-' + i)"
+            >
+              Choose File
+            </button>
+            <span id="image2Path-{{ i }}" class="file-path"></span>
+            <p>Jenis file JPG ukuran 800 x 570</p>
+          </div>
+          <div class="input">
+            <h5>Nama Produk</h5>
+            <input formControlName="nameproduk" type="text" class="inputan" />
+          </div>
+          <div class="input">
+            <h5>Nama PT</h5>
+            <input formControlName="namept" type="text" class="inputan" />
+          </div>
+          <div class="input">
+            <h5>Alamat PT</h5>
+            <input formControlName="AlamatPT" type="text" class="inputan" />
+          </div>
+          <div class="input">
+            <h5>Deksripsi Produk</h5>
+            <input formControlName="deksripsi" type="text" class="inputan" />
+          </div>
+        </div>
+      </div>
+
+      <div class="button">
+        <button type="button" (click)="addRegulation()">Tambahkan</button>
+      </div>
+
+      <hr>
+
+      <div class="berita-button">
+        <button class="tutup" type="button">Tutup</button>
+        <button class="simpan" type="submit">Simpan</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
